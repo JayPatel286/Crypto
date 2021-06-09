@@ -1,49 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cryptography Website</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="modal.css" />
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
 </head>
-<body id='body-pd'>
+
+<body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle">
-            <i class='bx bx-menu' id="header-toggle"></i>
+            <i class="bx bx-menu" id="header-toggle"></i>
         </div>
     </header>
 
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <a href="#" class="nav_logo">
-                <i class='bx bx-layer nav_logo-icon' ></i>
+                <i class="bx bx-layer nav_logo-icon"></i>
                 <span class="nav_logo-name">Crypto</span>
             </a>
 
             <div class="nav_list">
                 <a href="#" class="nav_link active">
-                    <i class='bx bx-home nav_icon'></i>
+                    <i class="bx bx-home nav_icon"></i>
                     <span class="nav_name">Home</span>
                 </a>
                 <a href="#" class="nav_link">
-                    <i class='bx bx-info-circle nav_icon'></i>
+                    <i class="bx bx-info-circle nav_icon"></i>
                     <span class="nav_name">About</span>
                 </a>
                 <a href="#" class="nav_link">
-                    <i class='bx bxs-contact nav_icon'></i>
+                    <i class="bx bxs-contact nav_icon"></i>
                     <span class="nav_name">Contact us</span>
                 </a>
                 <a href="#" class="nav_link">
-                    <i class='bx bxl-linkedin-square nav_icon' ></i>
+                    <i class="bx bxl-linkedin-square nav_icon"></i>
                     <span class="nav_name">Linked In</span>
                 </a>
             </div>
         </nav>
     </div>
 
+    <div class="container">
+        <div class="box">
+            <h1>Input</h1>
+            <button class="input_type">
+                <span id="in_type">Text </span> <i class="bx bx-caret-down"></i>
+            </button>
+            <hr />
+            <textarea name="Text" class="input-box" cols="40" rows="7" spellcheck="false"></textarea>
+        </div>
+        <div class="menu">
+            <div class="upper_menu">
+                <button class="select active" id="encode">Encode</button>
+                <button class="select" id="decode">Decode</button>
+                <br />
+                <button data-modal-target="#modal" class="selected">
+                    <span id="sel_option" >Reverse </span>
+                    <i class="bx bx-caret-down"></i>
+                </button>
+            </div>
+            <hr />
+            <div class="sub_menu">
+                <div class="myMenu reverse_menu selected__">
+                    <span class="by">By</span>
+                    <div class="options">
+                        <label for="byChar" class="radio" id="char">
+                            <input type="radio" name="myRadioField" id="byChar" class="radio_input" checked />
+                            <div class="radio_radio"></div>
+                            Character
+                        </label>
+                        <label for="byLine" class="radio" id="line">
+                            <input type="radio" name="myRadioField" id="byLine" class="radio_input" />
+                            <div class="radio_radio"></div>
+                            Line
+                        </label>
+                    </div>
+                </div>
+                <div class="myMenu replace_menu">
+                    <div class="options_replace">
+                        <span class="find_label">Find</span>
+                        <input type="text" class="find_box" spellcheck="false">
+                        <span class="replace_label">Replace</span>
+                        <input type="text" class="replace_box" spellcheck="false">
+                        <span class="replace_label">Case Sensitivity</span>
+                        <div class="boolean">
+                            <span class="yesOp boolean_choice sel_boolean" id="yes">Yes</span>
+                            <span class="noOp boolean_choice" id="no">No</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="myMenu case_menu">
+                    <span class="by">Case</span>
+                    <div class="options">
+                        <label for="upper" class="radio" id="upperCase">
+                            <input type="radio" name="caseRadio" id="upper" class="radio_input" checked />
+                            <div class="radio_radio"></div>
+                            Upper Case
+                        </label>
+                        <label for="lower" class="radio" id="lowerCase">
+                            <input type="radio" name="caseRadio" id="lower" class="radio_input" />
+                            <div class="radio_radio"></div>
+                            Lower Case
+                        </label>
+                        <label for="capitalize" class="radio" id="capz">
+                            <input type="radio" name="caseRadio" id="capitalize" class="radio_input" />
+                            <div class="radio_radio"></div>
+                            Capitalize
+                        </label>
+                        <label for="alternating" class="radio" id="alter">
+                            <input type="radio" name="caseRadio" id="alternating" class="radio_input" />
+                            <div class="radio_radio"></div>
+                            Alternating Case
+                        </label>
+                        <label for="invert" class="radio" id="inv">
+                            <input type="radio" name="caseRadio" id="invert" class="radio_input" />
+                            <div class="radio_radio"></div>
+                            Invert Case
+                        </label>
+                    </div>
+                </div>
+                <div class="myMenu morse_menu">
+                    <div class="options_morse">
+                        <div class="shortDiv">
+                            <span class="short_label">Short</span>
+                            <input type="text" class="short_box" spellcheck="false">
+                        </div>
+                        <div class="vertical"></div>
+                        <div class="longDiv">
+                            <span class="long_label">Long</span>
+                            <input type="text" class="long_box" spellcheck="false">
+                        </div>
+                        <div class="vertical"></div>
+                        <div class="spaceDiv">
+                            <span class="space_label">Space</span>
+                            <input type="text" class="space_box" spellcheck="false">
+                        </div>
+                    </div>
+                </div>
+                <div class="myMenu number_menu">
+                    <span class="by">Read</span>
+                    <div class="options">
+                        <label for="binary" class="radio" id="bin">
+                            <input type="radio" name="fromRadio" id="binary" class="radio_input" checked />
+                            <div class="radio_radio"></div>
+                            Binary (2)
+                        </label>
+                        <label for="octal" class="radio" id="oct">
+                            <input type="radio" name="fromRadio" id="octal" class="radio_input" />
+                            <div class="radio_radio"></div>
+                            Octal (8)
+                        </label>
+                        <label for="decimal" class="radio" id="dec">
+                            <input type="radio" name="fromRadio" id="decimal" class="radio_input" />
+                            <div class="radio_radio"></div>
+                            Decimal (10)
+                        </label>
+                        <label for="hexadecimal" class="radio" id="hexa">
+                            <input type="radio" name="fromRadio" id="hexadecimal" class="radio_input" />
+                            <div class="radio_radio"></div>
+                            HexaDecimal (16)
+                        </label>
+                        <label for="roman" class="radio" id="rom">
+                            <input type="radio" name="fromRadio" id="roman" class="radio_input" />
+                            <div class="radio_radio"></div>
+                            Roman Numerals
+                        </label>
+                    </div>
+                    <span class="by">Convert to</span>
+                    <div class="options">
+                        <label for="out_binary" class="radio" id="out_bin">
+                            <input type="radio" name="toRadio" id="out_binary" class="radio_input" checked />
+                            <div class="radio_radio"></div>
+                            Binary (2)
+                        </label>
+                        <label for="out_octal" class="radio" id="out_oct">
+                            <input type="radio" name="toRadio" id="out_octal" class="radio_input" />
+                            <div class="radio_radio"></div>
+                            Octal (8)
+                        </label>
+                        <label for="out_decimal" class="radio" id="out_dec">
+                            <input type="radio" name="toRadio" id="out_decimal" class="radio_input" />
+                            <div class="radio_radio"></div>
+                            Decimal (10)
+                        </label>
+                        <label for="out_hexadecimal" class="radio" id="out_hexa">
+                            <input type="radio" name="toRadio" id="out_hexadecimal" class="radio_input" />
+                            <div class="radio_radio"></div>
+                            HexaDecimal (16)
+                        </label>
+                        <label for="out_roman" class="radio" id="rom">
+                            <input type="radio" name="toRadio" id="out_roman" class="radio_input" />
+                            <div class="radio_radio"></div>
+                            Roman Numerals
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <h1>Output</h1>
+            <button class="input_type">
+                <span id="out_type">Text </span> <i class="bx bx-caret-down"></i>
+            </button>
+            <hr />
+            <textarea readonly name="Text" class="output-box" cols="40" rows="7" spellcheck="false"></textarea>
+        </div>
+    </div>
 
-    <script src="index.js"></script>
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <div class="title">Library</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="category">
+                <div class="heading">
+                    Transform
+                </div>
+                <div class="select_options">
+                    <label for="reverse" class="option" id="rev">
+                        <input type="radio" name="select_category" id="reverse" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        Reverse
+                    </label>
+                    <label for="replace" class="option" id="rep">
+                        <input type="radio" name="select_category" id="replace" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        Replace
+                    </label>
+                    <label for="case" class="option" id="case_transform">
+                        <input type="radio" name="select_category" id="case" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        Case Transform
+                    </label>
+                    <label for="number_system" class="option" id="num_system">
+                        <input type="radio" name="select_category" id="number_system" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        Number System
+                    </label>
+                </div>
+            </div>
+            <div class="category">
+                <div class="heading">
+                    Alphabets
+                </div>
+                <div class="select_options">
+                    <label for="morse" class="option" id="morse_code">
+                        <input type="radio" name="select_category" id="morse" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        Morse Code
+                    </label>
+                    <label for="s_alpha" class="option" id="spelling_alphabets">
+                        <input type="radio" name="select_category" id="s_alpha" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        Spelling Alphabets
+                    </label>
+                </div>
+            </div>
+            <div class="category">
+                <div class="heading">
+                    Ciphers
+                </div>
+                <div class="select_options">
+                    <label for="ceaser" class="option" id="ceaser_cipher">
+                        <input type="radio" name="select_category" id="ceaser" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        Ceaser Cipher
+                    </label>
+                    <label for="bacon" class="option" id="bacon_cipher">
+                        <input type="radio" name="select_category" id="bacon" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        Bacon Cipher
+                    </label>
+                    <label for="vigenere" class="option" id="vigenere_cipher">
+                        <input type="radio" name="select_category" id="vigenere" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        Vigenére Cipher
+                    </label>
+                    <label for="affine" class="option" id="affine_cipher">
+                        <input type="radio" name="select_category" id="affine" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        Affine Cipher
+                    </label>
+                    <label for="rot" class="option" id="rot13">
+                        <input type="radio" name="select_category" id="rot" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        ROT13
+                    </label>
+                    <label for="alpha_sub" class="option" id="alphabetical_sub">
+                        <input type="radio" name="select_category" id="alpha_sub" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        Alphabetical Substitution
+                    </label>
+                    <label for="a1z" class="option" id="a1z26">
+                        <input type="radio" name="select_category" id="a1z" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        A1Z26
+                    </label>
+                </div>
+            </div>
+            <div class="category">
+                <div class="heading">
+                    Square Ciphers
+                </div>
+                <div class="select_options">
+                    <label for="polybius" class="option" id="polybius_cipher">
+                        <input type="radio" name="select_category" id="polybius" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        Polybius Cipher
+                    </label>
+                    <label for="tap" class="option" id="tap_code">
+                        <input type="radio" name="select_category" id="tap" class="radio_input" />
+                        <i class='bx bxs-circle'></i>
+                        Tap Code
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="overlay"></div>
+
+    <script src="nav.js"></script>
+    <script src="main.js"></script>
+    <script src="modal.js"></script>
+    <script src="numberSystem.js"></script>
 </body>
+
 </html>
